@@ -1,6 +1,6 @@
-const isChecked = true,
-        isClose = false;
-
-// console.log(isChecked || isClose);
-console.log(isChecked || !isClose);
-    
+for (let i = 1; i < 10; i++){
+    if (i == 6) {
+        break;
+    }
+    console.log(i);
+}

@@ -1,6 +1,6 @@
-for (let i = 1; i < 10; i++){
-    if (i == 6) {
-        break;
-    }
-    console.log(i);
+function calc(a, b){
+    return a + b;
 }
+
+console.log(calc(4, 3));
+console.log(calc(5, 6));

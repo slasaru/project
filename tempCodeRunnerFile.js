@@ -1,6 +1,11 @@
-function calc(a, b){
-    return a + b;
-}
+const soldier = {
+    health: 400,
+    armor: 100,
+};
 
-console.log(calc(4, 3));
-console.log(calc(5, 6));
+const john = {
+    health: 100
+};
+
+john.__proto__ = soldier;
+console.log(john.armor);

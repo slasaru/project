@@ -1,11 +1,4 @@
-const soldier = {
-    health: 400,
-    armor: 100,
-};
+const a = [1, 2, 3]; 
+const b = [1, 2, 3];
 
-const john = {
-    health: 100
-};
-
-john.__proto__ = soldier;
-console.log(john.armor);
+console.log(a=b);

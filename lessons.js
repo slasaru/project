@@ -486,19 +486,139 @@ console.log(john.armor);
 john.sayHello();
 
 
+// 26. Динамическая типизация в JS
+// To String
+//1) String
+console.log(typeof(String(null)));
+console.log(typeof(String(4)));
+
+//2) Concatenation
+console.log(typeof(5 + ''));
+// // // // //
+const num = 5;
+console.log('https://vk.com/catalog/' + num);
+const fontSize = 26 + 'px';
+
+// // // // //
+// To Number
+//1) Number
+console.log(typeof(Number('4')));
+
+//2) Унарный плюс
+console.log(typeof(+'5'));
+
+//3)
+console.log(typeof(parseInt('15px', 10)));
+
+//4)
+let answer = +prompt('Hello', '');
 
 
+// // // // //
+// To Boolean
+//1) В false превращаются следующие операторы и символы:
+//0, '', null, underfined, NaN;
+
+let switcher = null;
+
+// Не сработает:
+if (switcher) {
+    console.log('Working...');
+}
+
+// Сработает:
+if (!switcher) {
+    console.log('Working...');
+}
+
+// Сработает:
+switcher = 1;
+if (switcher) {
+    console.log('Working...');
+}
+
+//2)
+console.log(typeof(Boolean('4')));
+
+//3)
+console.log(typeof(!!'444'));
 
 
+//28. Получение элементов со страницы
 
+const box = document.getElementById('box');
 
+const btns = document.getElementsByTagName('button');
 
+console.log(btns[1]);
 
+const circles = document.getElementsByClassName('circle');
+console.log(circles);
 
+const hearts = document.querySelectorAll('.heart');
 
+hearts.forEach(item => {
+    console.log(item);
+});
 
+const oneHeart = document.querySelector('.heart');
+console.log(oneHeart);
 
+// 29. Действия с элементами на странице
+const box = document.getElementById('box'),
+    btns = document.getElementsByTagName('button'),
+    circles = document.getElementsByClassName('circle'),
+    // wrapper = document.querySelector('.wrapper'),
+    // hearts = document.querySelectorAll('.heart'),
+    // oneHeart = document.querySelector('.heart'),
+    wrapper = document.querySelector('.wrapper'),
+    hearts = wrapper.querySelectorAll('.heart'),
+    oneHeart = wrapper.querySelector('.heart');
 
+// box.style.backgroundColor = 'maroon';
+// box.style.width = '400px';
+box.style.cssText = 'background-color: green; width: 500px';
 
+btns[1].style.borderRadius = '100%';
+circles[0].style.backgroundColor = 'red';
+
+// for (let i = 0; i < hearts.length; i++){
+//     hearts[i].style.backgroundColor = 'green';
+// }
+hearts.forEach(item => {
+    item.style.backgroundColor = 'blue';
+});
+
+const div = document.createElement('div');
+// const text = document.createTextNode('Here I was...');
+
+div.classList.add('black');
+
+// document.body.append(div);
+
+wrapper.append(div);
+// wrapper.appendChild(div);
+
+// wrapper.prepend(div);
+
+// hearts[0].before(div);
+// hearts[0].after(div);
+
+// wrapper.insertBefore(div, hearts[1]);
+
+// circles[0].remove();
+// wrapper.removeChild(hearts[1]);
+
+// hearts[0].replaceWith(circles[0]);
+// wrapper.replaceChild(circles[0], hearts[0]);
+
+// div.innerHTML = "<h1>Hello World</h1>";
+// div.textContent = "Hello World";
+
+div.innerHTML = "<h1>Hello World</h1>";
+// div.insertAdjacentHTML('beforebegin','<h2>Hello</h2>');
+// div.insertAdjacentHTML('afterbegin','<h2>Hello</h2>');
+// div.insertAdjacentHTML('beforeend','<h2>Hello</h2>');
+div.insertAdjacentHTML('afterend','<h2>Hello</h2>');
 
 

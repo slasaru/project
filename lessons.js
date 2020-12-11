@@ -621,4 +621,79 @@ div.innerHTML = "<h1>Hello World</h1>";
 // div.insertAdjacentHTML('beforeend','<h2>Hello</h2>');
 div.insertAdjacentHTML('afterend','<h2>Hello</h2>');
 
+// // // // //
+// 31. События и их обработчики
+const btn = document.querySelector('button'),
+    btns = document.querySelectorAll('button'),
+    overlay = document.querySelector('.overlay');
+
+// устаревший вариант - в теле html
+<button onclick="alert('Click!')" id="btn">Нажми меня</button>
+
+// устаревший вариант
+btn.onclick = function(){
+    alert('Click!');
+};
+
+// правильный вариант - через обработчик событий
+btn.addEventListener('click', () => {
+    alert('Click!');
+});
+
+btn.addEventListener('click', () => {
+    alert('Second Click!');
+});
+
+// событие можно назвать как угодно, в данном случае - e
+btn.addEventListener('mouseenter', (e)=> {
+    console.log(e.target);
+    e.target.remove();
+    console.log('Hover');
+});
+
+let i = 0;
+const deleteElement = (e)=> {
+    console.log(e.target);
+    console.log(e.type);
+    i++;
+    if (i == 1){btn.removeEventListener('click', deleteElement);}
+};
+
+btn.addEventListener('click', deleteElement);
+overlay.addEventListener('click', deleteElement);
+
+// добавляем исполнение кода для всех элементов (кнопок)
+// once: true - чтобы использовать только один раз!
+btns.forEach(btn => {
+    btn.addEventListener('click', deleteElement, {once: true});
+});
+
+const link = document.querySelector('a');
+link.addEventListener('click', function(event){
+    event.preventDefault();
+    console.log(event.target);
+});
+
+// // // // //
+// 32. Навигация по DOM - элементам, data-атрибуты, преимущество for/of
+console.log(document.head);
+console.log(document.documentElement);
+console.log(document.body.childNodes);
+
+console.log(document.body.firstChild);
+console.log(document.body.firstElementChild);
+console.log(document.body.lastChild);
+
+console.log(document.querySelector('#current').parentNode.parentNode);
+console.log(document.querySelector('#current').parentElement);
+
+console.log(document.querySelector('[data-current="3"]').nextSibling);
+console.log(document.querySelector('[data-current="3"]').nextElementSibling);
+
+for (let node of document.body.childNodes){
+    if (node.nodeName=='#text'){
+        continue;
+    }
+    console.log(node);
+}
 
